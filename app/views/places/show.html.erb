@@ -8,7 +8,9 @@
 <% end %>
 
 <p>
-  <a href="/entries/new?place_id=<%= @place["id"] %>">New Entry</a>
+  <% if @current_user != nil %>
+    <a href="/entries/new?place_id=<%= @place["id"] %>">New Entry</a>
+  <% end %>
 </p>
 
 <p>
