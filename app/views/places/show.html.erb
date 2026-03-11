@@ -1,18 +1,33 @@
-<h1><%= @place["name"] %></h1>
+<div class="row align-items-center mb-1">
+  <div class="col">
+    <h1><%= @place["name"] %></h1>
+  </div>
+</div>
 
-<h2>My Entries</h2>
-<% for entry in @entries %>
-  <h3><%= entry["title"] %></h3>
-  <h4><%= entry["occurred_on"] %></h4>
-  <p><%= entry["description"] %></p>
-<% end %>
-
-<p>
+<div class="mt-2 mb-5">
   <% if @current_user != nil %>
-    <a href="/entries/new?place_id=<%= @place["id"] %>">New Entry</a>
+    <a href="/entries/new?place_id=<%= @place["id"] %>" class = "mt-4 btn btn-primary">New Entry</a>
   <% end %>
-</p>
+</div>
 
-<p>
-  <a href="/places">Back to All Places</a>
-</p>
+<div class="row">
+  <% if @entries.empty? %>
+    <div class="col-12">
+      <div class="alert alert-primary">
+        No entries yet. Start by clicking "New Entry"!
+      </div>
+    </div>
+  <% else %>
+    <% for entry in @entries %>
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-black"><%= entry["title"] %></h5>
+            <h6 class="card-subtitle mb-3 text-muted"><%= entry["occurred_on"].strftime("%B %d, %Y") %></h6>
+            <p class="card-text"><%= entry["description"] %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
