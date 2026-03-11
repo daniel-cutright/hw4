@@ -11,23 +11,31 @@
 </div>
 
 <div class="row">
-  <% if @entries.empty? %>
-    <div class="col-12">
-      <div class="alert alert-primary">
-        No entries yet. Start by clicking "New Entry"!
-      </div>
-    </div>
-  <% else %>
-    <% for entry in @entries %>
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title fw-bold text-black"><%= entry["title"] %></h5>
-            <h6 class="card-subtitle mb-3 text-muted"><%= entry["occurred_on"].strftime("%B %d, %Y") %></h6>
-            <p class="card-text"><%= entry["description"] %></p>
-          </div>
+  <% if @current_user != nil %>
+    <% if @entries.empty? %>
+      <div class="col-12">
+        <div class="alert alert-primary">
+          No entries yet. Start by clicking "New Entry"!
         </div>
       </div>
+    <% else %>
+      <% for entry in @entries %>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-black"><%= entry["title"] %></h5>
+              <h6 class="card-subtitle mb-3 text-muted"><%= entry["occurred_on"].strftime("%B %d, %Y") %></h6>
+              <p class="card-text"><%= entry["description"] %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
+  <% else %>
+    <div class="col-12">
+      <div class="alert alert-primary">
+        Please login first.
+      </div>
+    </div>
   <% end %>
 </div>
