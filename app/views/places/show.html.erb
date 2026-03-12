@@ -23,15 +23,17 @@
         <div class="col-12 col-md-6 col-lg-4 mb-4">
           <div class="card h-100 shadow-sm">
 
-            <div class="card-body">
+            <div class="card-body d-flex flex-column p-4">
               <h5 class="card-title fw-bold text-black"><%= entry["title"] %></h5>
-              <h6 class="card-subtitle mb-3 text-muted"><%= entry["occurred_on"].strftime("%B %d, %Y") %></h6>
+              <h6 class="card-subtitle mb-3 text-muted small"><%= entry["occurred_on"].strftime("%B %d, %Y") %></h6>
          
               <% if entry.uploaded_image.attached? %>
-                <img src="<%= url_for(entry.uploaded_image) %>" class="img-fluid mb-3 rounded shadow-sm">
+                <div class="mb-2">
+                 <img src="<%= url_for(entry.uploaded_image) %>" class="img-fluid mb-3 rounded shadow-sm">
+                </div>
               <% end %>
 
-              <p class="card-text"><%= entry["description"] %></p>
+              <p class="card-text text-secondary"><%= entry["description"] %></p>
             </div>
           </div>
         </div>
