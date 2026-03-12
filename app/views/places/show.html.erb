@@ -22,9 +22,15 @@
       <% for entry in @entries %>
         <div class="col-12 col-md-6 col-lg-4 mb-4">
           <div class="card h-100 shadow-sm">
+
             <div class="card-body">
               <h5 class="card-title fw-bold text-black"><%= entry["title"] %></h5>
               <h6 class="card-subtitle mb-3 text-muted"><%= entry["occurred_on"].strftime("%B %d, %Y") %></h6>
+         
+              <% if entry.uploaded_image.attached? %>
+                <img src="<%= url_for(entry.uploaded_image) %>" class="img-fluid mb-3 rounded shadow-sm">
+              <% end %>
+
               <p class="card-text"><%= entry["description"] %></p>
             </div>
           </div>
