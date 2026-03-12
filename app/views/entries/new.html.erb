@@ -1,4 +1,4 @@
-<div class="row align-items-center mb-1">
+<div class="row align-items-center mb-4">
   <div class="col">
     <h1>New Entry</h1>
   </div>
@@ -10,22 +10,22 @@
       
       <input type="hidden" name="place_id" value="<%= params["place_id"] %>">
 
-      <div class="mb-3 mt-3">
+      <div class="mb-3">
         <label for="title_input" class="form-label">Title</label>
         <input type="text" name="title" id="title_input" class="form-control">
       </div>
 
-      <div class="mb-3 mt-3">
+      <div class="mb-3">
         <label for="description_input" class="form-label">Description</label>
         <textarea name="description" id="description_input" class="form-control" rows="3"></textarea>
       </div>
 
-      <div class="mb-3 mt-3">
+      <div class="mb-3">
         <label for="occurred_on_input" class="form-label">Occurred On</label>
         <input type="date" name="occurred_on" id="occurred_on_input" class="form-control">
       </div>
 
-      <button class="btn btn-primary mt-4">Save</button>
+      <button class="btn btn-primary mt-3">Save</button>
     </form>
   </div>
 </div>
