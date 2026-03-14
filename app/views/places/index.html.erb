@@ -4,27 +4,34 @@
   </div>
 </div>
 
-<div class="mb-4">
-  <a href="/places/new" class = "btn btn-primary">New Place</a>
-</div>
-
 <div class="row">
-  <% if @places.empty? %>
-    <div class="col-12">
-      <div class="alert alert-primary">
-        No places yet. Start by clicking "New Place"!
-      </div>
+  <% if @current_user != nil %>
+    <div class="mb-4">
+      <a href="/places/new" class = "btn btn-primary">New Place</a>
     </div>
+    <% if @places.empty? %>
+      <div class="col-12">
+        <div class="alert alert-primary">
+          No places yet. Start by clicking "New Place"!
+        </div>
+      </div>
+    <% else %>
+      <div class="col-12">
+        <ul class="list-group list-group-flush mb-4">
+          <% for place in @places %>
+            <li class="list-group-item d-flex align-items-center mb-0 border-0 ps-0">
+              <i class="bi bi-geo-alt-fill me-1 text-secondary fs-5"></i>
+              <a href="/places/<%= place["id"] %>" class="fw-normal fs-5"><%= place["name"] %></a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   <% else %>
     <div class="col-12">
-      <ul class="list-group list-group-flush mb-4">
-        <% for place in @places %>
-          <li class="list-group-item d-flex align-items-center mb-0 border-0 ps-0">
-            <i class="bi bi-geo-alt-fill me-1 text-secondary fs-5"></i>
-            <a href="/places/<%= place["id"] %>" class="fw-normal fs-5"><%= place["name"] %></a>
-          </li>
-        <% end %>
-      </ul>
+      <div class="alert alert-primary">
+        Please login first.
+      </div>
     </div>
   <% end %>
 </div>
